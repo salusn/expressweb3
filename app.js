@@ -1,10 +1,16 @@
+// jshint ignore: start
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 var Web3 = require('web3');
+var web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
+var net = require('net');
+var web3 = new Web3('/users/myuser/.ethereum/geth.ipc', net); 
+console.log(net)
 
 var index = require('./routes/index');
 var users = require('./routes/users');
