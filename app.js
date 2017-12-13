@@ -8,9 +8,23 @@ var bodyParser = require('body-parser');
 
 var Web3 = require('web3');
 var web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
+//var web3 = new Web3(Web3.givenProvider || new Web3.providers.WebsocketProvider('http://localhost:8545'));
+
+
 var net = require('net');
-var web3 = new Web3('/users/myuser/.ethereum/geth.ipc', net); 
-console.log(net)
+//var web3 = new Web3('/users/myuser/.ethereum/geth.ipc', net); 
+
+var batch = new web3.BatchRequest();
+
+web3.eth.getAccounts(console.log);
+//var contract = new web3.eth.Contract();
+// var subscription = web3.eth.subscribe('logs', {
+//     address: '0x27255db50c8e605d1fdbeced6b675d5352ea73e9',
+//     topics: ['cd81e6b975bcc76751a4ee49e53e37e15f76fe0955316a34d0e92917bb841f0c']
+// }, function(error, result){
+//     if (!error)
+//         console.log(log);
+// });
 
 var index = require('./routes/index');
 var users = require('./routes/users');
