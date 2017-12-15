@@ -17,7 +17,9 @@ var net = require('net');
 var batch = new web3.BatchRequest();
 //console.log(web3.eth_accounts)
 //web3.eth.getAccounts(console.log);
-console.log(web3.eth.privateKey)
+var coinbase = web3.eth.coinbase;
+console.log(coinbase);
+
 //var contract = new web3.eth.Contract();
 //console.log(contract);
 var index = require('./routes/index');
