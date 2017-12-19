@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 
+const solc = require('solc');
 var Web3 = require('web3');
 var web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
 var net = require('net');
@@ -21,27 +22,6 @@ web3.eth.defaultAccount = '0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE';
 
 // web3.eth.getBlockTransactionCount("0x15A45cAC511550c2c0fc7678Eb47a8a145376d37")
 // .then(console.log);
-
-
-
-var code = "603d80600c6000396000f3007c01000000000000000000000000000000000000000000000000000000006000350463c6888fa18114602d57005b6007600435028060005260206000f3";
-
-web3.eth.sendTransaction({
-    from: '0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE',
-    data: code // deploying a contracrt
-}, function(error, hash){
-    console.log(hash)
-});
-
-// using the promise
-// web3.eth.sendTransaction({
-//     from: '0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE',
-//     to: '0x6bce56ff61094d8bD4C2919bA87e49aE0bB5F204',
-//     value: '1000000000000000'
-// })
-// .then(function(receipt){
-//     console.log(receipt)
-// });
 
 var index = require('./routes/index');
 var users = require('./routes/users');
