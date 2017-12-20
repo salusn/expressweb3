@@ -11,12 +11,7 @@ var fs = require('fs');
 const solc = require('solc');
 var Web3 = require('web3');
 var web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
-var net = require('net');
-var batch = new web3.BatchRequest();
-//web3.eth.getAccounts(console.log);
 
-// web3.eth.getAccounts()
-// .then(console.log);
 web3.eth.defaultAccount = '0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE';
 // web3.eth.getBalance("0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE")
 // .then(console.log);

@@ -7,12 +7,18 @@ const solc = require('solc');
 var Web3 = require('web3');
 var web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
 
-const input = fs.readFileSync('Token.sol');
+const input = fs.readFileSync('EscrowSale.sol');
 const output = solc.compile(input.toString(), 1);
-const bytecode = output.contracts[':Token'].bytecode;
 
-const abi = JSON.parse(output.contracts[':Token'].interface);
-const contract = new web3.eth.Contract(abi);
+const bytecode = output.contracts[':EscrowSale'].bytecode;
+
+const abi = JSON.parse(output.contracts[':EscrowSale'].interface);
+web3.eth.defaultAccount = '0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE';
+//const contract = new web3.eth.Contract(abi);
+var CoursetroContract = new web3.eth.Contract(abi);
+//console.log(CoursetroContract.methods.createEscrow)
+
+//createEscrow(address _buyer,address _seller,address _arbitrator,uint _amount,bytes32 orderId)
 
 /* GET home page. */
 router.get('/pay', function(req, res, next) {
@@ -30,28 +36,25 @@ router.post('/pay', function(req, res, next) {
 //     res.redirect('/');
 // });
 
-const contractInstance = contract.new({
-    data: '0x' + bytecode,
-    from: web3.eth.coinbase,
-    gas: 90000*2
-}, (err, res) => {
-    if (err) {
-        console.log(err);
-        return;
-    }
+//})
+CoursetroContract.methods.createEscrow({buyer: "0x49889df654e96eaa1696bfbf4836479fd8c4fa9a",
+    seller: "0xb3346b74d5e2f381d2e8e31822c24777e4a6a59c",
+    arbitrator: "0xa533408e4db22f328cd0a997024f029e5c023e16",
+    amount: "123",
+    orderId: "5627"})
 
-    // Log the tx, you can explore status with eth.getTransaction()
-    console.log(res.transactionHash);
-
-    // If we have an address property, the contract was deployed
-    if (res.address) {
-        console.log('Contract address: ' + res.address);
-        // Let's test the deployed contract
-        testContract(res.address);
-    }
+.then(function(err,result){
+    // will be fired once the receipt its mined
 });
 
+    //     buyer = "0x49889df654e96eaa1696bfbf4836479fd8c4fa9a"
+    //     seller = "0xb3346b74d5e2f381d2e8e31822c24777e4a6a59c"
+    //     arbitrator = "0xa533408e4db22f328cd0a997024f029e5c023e16"
+    //     amount = "123"
+    //     orderId = "5627"
 
+    // CoursetroContract.methods.createEscrow(buyer,seller,arbitrator,amount,orderId)
+    // console.log(CoursetroContract.methods.createEscrow(buyer,seller,arbitrator,amount,orderId))
 });
 
 function testContract(address) {
