@@ -22,6 +22,7 @@ web3.eth.defaultAccount = '0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE';
 var index = require('./routes/index');
 var users = require('./routes/users');
 var pay = require('./routes/pay');
+var member = require('./routes/member');
 
 var app = express();
 // view engine setup
@@ -41,6 +42,8 @@ app.use('/users', users);
 
 app.get('/pay', pay);
 app.post('/pay', pay);
+app.get('/member', member);
+app.post('/member', member);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
