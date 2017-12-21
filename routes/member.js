@@ -22,12 +22,13 @@ router.get('/member', function(req, res, next) {
 
 
 router.post('/member', function(req, res, next) {
-
+	
 	var newadmin = req.body.address;
 
 	return CoursetroContract.methods.addMember(newadmin).call({from: web3.eth.defaultAccount}, function(error, result){
-	   console.log(result)	   
+
 	});
+
 
 });
 
