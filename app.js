@@ -23,6 +23,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var pay = require('./routes/pay');
 var member = require('./routes/member');
+var deposit = require('./routes/deposit');
 
 var app = express();
 // view engine setup
@@ -44,6 +45,8 @@ app.get('/pay', pay);
 app.post('/pay', pay);
 app.get('/member', member);
 app.post('/member', member);
+app.get('/deposit', deposit);
+app.post('/deposit', deposit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
