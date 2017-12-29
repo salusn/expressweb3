@@ -39,7 +39,7 @@ contract EscrowSale {
         uint _amount,
         bytes32 orderId) public{
         require(!orderdata[orderId].used);
-       // require(adminlist[_arbitrator] == true);
+        require(adminlist[_arbitrator] == true);
         OrderDetails memory sd;
         sd.buyer = _buyer;
         sd.seller = _seller;

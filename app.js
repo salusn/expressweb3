@@ -10,14 +10,7 @@ var fs = require('fs');
 
 const solc = require('solc');
 var Web3 = require('web3');
-var web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
-
-web3.eth.defaultAccount = '0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE';
-// web3.eth.getBalance("0x4c03589d6eC8D5718dBF992FD535E3b25c4F94AE")
-// .then(console.log);
-
-// web3.eth.getBlockTransactionCount("0x15A45cAC511550c2c0fc7678Eb47a8a145376d37")
-// .then(console.log);
+var web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
