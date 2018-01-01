@@ -10,7 +10,7 @@ var fs = require('fs');
 
 const solc = require('solc');
 var Web3 = require('web3');
-var web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
+var web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
